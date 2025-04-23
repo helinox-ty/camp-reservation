@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helinox 사내 캠핑장 (로그인 필요)</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        #content { display: none; } /* 메인 콘텐츠 기본 숨김 */
+        #auth-section { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
+        #signin-button-wrapper { display: inline-block; margin: 5px; vertical-align: middle;}
+        #message { margin-top: 10px; color: #d32f2f; /* Tailwind class로 대체 가능 */ }
+        /* 로그아웃 버튼 기본 숨김 */
+        #logout-button { display: none; }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    </head>
+<body class="font-sans">
+    <nav class="bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="Helinox-로고_White.png" alt="Helinox" class="h-8 w-auto">
+                    <span class="text-white font-bold text-2xl font-sans">사내 캠핑장</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">  <a href="rules.html" class="text-white hover:text-gray-300 transition">이용수칙</a>
+                    <button id="logout-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 text-sm">
+                        로그아웃
+                    </button>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="auth-section">
+        <div id="signin-button-wrapper"></div> <p id="message">캠핑장 정보를 보려면 Google 계정으로 로그인하세요.</p>
+        </div>
+    <div id="content">
+        <div class="relative h-screen">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="캠핑장 전경" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex items-center">
+                <div class="text-white max-w-3xl">
+                    <h1 class="text-5xl font-bold mb-6 whitespace-nowrap">Helinox 사내 캠핑장에 오신 것을 환영합니다</h1>
+                    <p class="text-xl mb-8">자연 속에서 즐기는 특별한 휴식, 직원들을 위한 프리미엄 캠핑 공간</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeR5Pm6GnzZXGa9CLRhuJ2YkreVKxmUKLkuR8YgRmUrZ6orEQ/viewform"
+                           target="_blank"
+                           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg">
+                            예약하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">예약 현황</h2>
+                <div class="max-w-5xl mx-auto bg-white rounded-xl overflow-hidden shadow-xl">
+                    <div class="border-b border-gray-200 py-4 px-6 bg-black text-white">
+                        <p class="text-lg font-semibold">실시간으로 예약 상황을 확인하세요</p>
+                    </div>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=c_f64b31c1e80fc847fc2ea3fb3e9973faaca2cdab3216b3d11ae1b5b68c9bba64%40group.calendar.google.com&ctz=Asia%2FSeoul&bgcolor=%23ffffff&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0"
+                            style="border: 0" width="100%" height="600" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-20 bg-white">
+             <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">캠핑장 전경</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="0.jpg" alt="아름다운 산책로" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="1.jpg" alt="편안한 휴식 공간" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="2.jpg" alt="자연과 어우러진 피크닉 장소" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="3.jpg" alt="고요한 호수 풍경" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="4.jpg" alt="넓은 잔디밭 캠핑장" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="5.jpeg" alt="현대적인 편의시설" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">쉘터 내부</h2>
+                <p class="text-lg text-gray-700 mb-10 text-center max-w-4xl mx-auto">
+                    지하 1층에 위치한 쉘터 내부에는 냉장고, 제빙기, 워시타워, 화장실, 샤워장 등 편의시설이 마련되어 있습니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="8.jpeg" alt="쉘터 내부 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="9.jpeg" alt="쉘터 내부 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">캠핑장 이용수칙</h2>
+                <div class="max-w-4xl mx-auto bg-gray-100 rounded-lg p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-center">🧱 HARD RULES</h3>
+                    <p class="text-lg text-center mb-6"><strong>이건 반드시 지켜주세요.</strong></p>
+                    <ul class="list-disc pl-8 space-y-2 mb-6">
+                        <li class="text-lg">쉘터 앞 텐트 설치 및 차량 주차 금지</li>
+                        <li class="text-lg">쉘터 내부에서 식사, 취사, 취침 행위 금지</li>
+                        <li class="text-lg">예약자 없이 동반인만 이용하는 행위 금지</li>
+                    </ul>
+                    <p class="text-center text-gray-700 italic">
+                        We don't want to be strict,<br>
+                        but this place runs on trust. Let's keep it awesome.
+                    </p>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="rules.html" class="inline-block bg-primary hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                        전체 이용수칙 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-16 bg-gray-100">
+             <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">찾아오시는 길</h2>
+                <div class="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto mb-10">
+                    <div class="lg:w-1/2 bg-white rounded-lg p-8 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /> </svg> </div>
+                            <h3 class="text-2xl font-bold">주소</h3>
+                        </div>
+                        <div class="ml-16 space-y-4">
+                            <div>
+                                <p class="text-lg">충청북도 음성군 원남면 원중로399번길 309</p>
+                                <p class="text-gray-600">우편번호: 27739</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg mt-4">
+                                <p class="text-sm text-gray-600">* 마지막 다리를 건너서 좌회전 후 200m 직진하면 입구로 접근이 가능합니다.</p>
+                                <p class="text-sm text-gray-600 mt-1">일부 내비게이션은 잘못된 위치를 가르켜주니 유의하시기 바랍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 rounded-lg overflow-hidden shadow-lg bg-white"> <img src="7.jpeg" alt="캠핑장 위치 지도" class="w-full h-full object-cover"> </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white rounded-lg p-8 shadow-lg flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /> </svg> </div>
+                            <h3 class="text-2xl font-bold">대중교통 이용</h3>
+                        </div>
+                        <div class="space-y-6 ml-16 flex-grow">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">기차 이용</h4>
+                                <p>KTX/무궁화호 → 음성역 하차 → 택시 이용 (약 20분 소요)</p>
+                                <p class="text-sm text-gray-600 mt-1">음성역에서 거리: 약 15km</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">고속버스 이용</h4>
+                                <p>음성터미널 하차 → 시내버스 302번 → 원남면사무소 하차 → 도보 15분</p>
+                                <p class="text-sm text-gray-600 mt-1">버스 배차 간격: 30분</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-8 shadow-lg flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m0 0l-4-4m4 4l-4 4m8 6H4" /> </svg> </div>
+                            <h3 class="text-2xl font-bold">자차 이용</h3>
+                        </div>
+                        <div class="space-y-6 ml-16 flex-grow">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">서울 방면에서 오실 경우</h4>
+                                <p>중부고속도로 → 음성IC → 원남면 방면 → 원중로399번길</p>
+                                <p class="text-sm text-gray-600 mt-1">약 1시간 30분 소요 (거리: 약 120km)</p>
+                            </div>
+                             <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">대전 방면에서 오실 경우</h4>
+                                <p>경부고속도로 → 청주IC → 음성방면 → 원남면 방면 → 원중로399번길</p>
+                                <p class="text-sm text-gray-600 mt-1">약 1시간 20분 소요 (거리: 약 100km)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="Helinox-로고_White.png" alt="Helinox" class="h-8 w-auto">
+                        <span class="font-bold text-2xl">사내 캠핑장</span>
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>주소: 충청북도 음성군 원남면 원중로399번길 309</p>
+                    <p class="mt-2">© 2023 Helinox. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const CLIENT_ID = '375560997273-sldn4vctcngkb119tk9158c7q1ctidcu.apps.googleusercontent.com';
+        const ALLOWED_DOMAIN = '@helinox.com';
+
+        // HTML 요소 가져오기
+        const authSection = document.getElementById('auth-section');
+        const signinButtonWrapper = document.getElementById('signin-button-wrapper');
+        const logoutButton = document.getElementById('logout-button'); // Nav 바 안으로 옮겨짐
+        const messageElement = document.getElementById('message');
+        const contentElement = document.getElementById('content');
+
+        // JWT 토큰 디코딩 함수 (간단 버전)
+        function decodeJwtResponse(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                console.error("JWT 디코딩 오류:", e);
+                return null;
+            }
+        }
+
+        // 로그인 성공 시 콜백 함수
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            const responsePayload = decodeJwtResponse(response.credential);
+
+            if (!responsePayload) {
+                messageElement.textContent = '로그인 정보를 처리하는 중 오류가 발생했습니다.';
+                displayLoggedOutUI();
+                return;
+            }
+
+            const email = responsePayload.email;
+            const emailVerified = responsePayload.email_verified;
+
+            console.log("로그인 시도:", email, "인증됨:", emailVerified);
+
+            if (email && emailVerified && email.toLowerCase().endsWith(ALLOWED_DOMAIN.toLowerCase())) {
+                console.log("허용된 도메인 사용자:", email);
+                displayLoggedInUI();
+                // 이 페이지는 별도의 데이터 로딩 함수 호출이 필요 없어 보임
+            } else {
+                console.log("허용되지 않은 사용자 또는 이메일 미인증:", email);
+                messageElement.textContent = `[${email || '알 수 없음'}] 계정은 접근 권한이 없습니다. 허용된 도메인(${ALLOWED_DOMAIN})의 Google 계정으로 로그인하세요.`;
+                displayLoggedOutUI();
+            }
+        }
+
+        // 로그아웃 처리 함수
+        function handleLogout() {
+            google.accounts.id.disableAutoSelect();
+            console.log("로그아웃 처리됨 (세션 비활성화)");
+            displayLoggedOutUI();
+        }
+
+        // 로그인 상태 UI 표시
+        function displayLoggedInUI() {
+            authSection.style.display = 'none'; // 상단 인증 섹션 숨김
+            logoutButton.style.display = 'inline-block'; // Nav바의 로그아웃 버튼 보임
+            contentElement.style.display = 'block'; // 메인 콘텐츠 보임
+        }
+
+        // 로그아웃 상태 UI 표시
+        function displayLoggedOutUI() {
+            authSection.style.display = 'block'; // 상단 인증 섹션 보임
+            logoutButton.style.display = 'none'; // Nav바의 로그아웃 버튼 숨김
+            contentElement.style.display = 'none'; // 메인 콘텐츠 숨김
+            // Google 버튼은 자동으로 렌더링되므로 signinButtonWrapper를 숨길 필요 없음
+        }
+
+        // 페이지 로드 완료 시 실행 (window.onload 사용)
+        window.onload = function () {
+            try {
+                google.accounts.id.initialize({
+                    client_id: CLIENT_ID,
+                    callback: handleCredentialResponse
+                });
+
+                google.accounts.id.renderButton(
+                    signinButtonWrapper, // 버튼을 표시할 요소
+                    { theme: "outline", size: "large" }
+                );
+
+                // 페이지 로드 시 자동 로그인을 시도하지 않으려면 아래 줄 주석 처리 또는 삭제
+                // google.accounts.id.prompt();
+
+                // 로그아웃 버튼 이벤트 리스너
+                logoutButton.addEventListener('click', handleLogout);
+
+                // 초기 UI는 로그아웃 상태로 설정
+                displayLoggedOutUI();
+
+            } catch (error) {
+                 console.error("Google Identity Services 초기화 오류:", error);
+                 messageElement.textContent = 'Google 로그인 초기화 중 오류 발생. 페이지를 새로고침 해보세요.';
+                 displayLoggedOutUI();
+            }
+        };
+    </script>
+    </body>
+</html>
