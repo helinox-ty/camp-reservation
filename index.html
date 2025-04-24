@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helinox 사내 캠핑장 (로그인 필요)</title> <script src="https://cdn.tailwindcss.com"></script>
+    <title>Helinox 사내 캠핑장 (로그인 필요)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -27,7 +28,7 @@
             flex-direction: column;
         }
         #content { display: none; } /* 메인 콘텐츠 기본 숨김 */
-        #auth-section { 
+        #auth-section {
             background-color: #000;
             color: white;
             padding: 0;
@@ -70,75 +71,77 @@
             width: 100%;
             max-width: 700px;
             padding: 40px 20px;
-            margin: 0 auto;
+            margin: 0 auto; /* 상단 마진 제거 */
             text-align: center;
         }
-        #signin-button-wrapper { 
+        #signin-button-wrapper {
             display: inline-block;
-            margin: 50px 0 20px 0;
+            margin: 50px 0 20px 0; /* 상단 마진 증가 */
             position: relative;
             z-index: 10;
         }
-        #message { 
+        #message {
             margin-top: 15px;
-            color: #ffffff;
+            color: #ffffff; /* 기본 메시지 색상 */
             font-size: 18px;
             position: relative;
             z-index: 10;
             max-width: 500px;
-            display: none;
+            /* display: none; */ /* 초기 메시지 표시를 위해 제거 또는 수정 */
             text-align: center;
+            min-height: 27px; /* 메시지 영역 높이 확보 */
         }
         /* 로그아웃 버튼 기본 숨김 */
         #logout-button { display: none; }
-        .headline-en {
+        .headline-en { /* 스타일 일부 수정/추가 */
             font-weight: 700;
-            font-size: 2.5rem;
+            font-size: 2rem; /* 약간 축소 */
             letter-spacing: -0.5px;
             color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 0.5rem;
             line-height: 1.2;
             text-align: center;
         }
-        .headline-ko {
+        .headline-ko { /* 스타일 일부 수정/추가 */
             font-weight: 700;
-            font-size: 2.25rem;
+            font-size: 2rem; /* 약간 축소 */
             letter-spacing: -1px;
             color: white;
-            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem; /* 간격 조정 */
             line-height: 1.2;
             text-align: center;
         }
         .subheadline-ko {
-            font-size: 1.8rem;
+            font-size: 1.2rem; /* 크기 조정 */
             font-weight: 500;
             letter-spacing: -0.5px;
             color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5rem; /* 간격 조정 */
             line-height: 1.4;
             text-align: center;
-            white-space: nowrap;
+            /* white-space: nowrap; */ /* 자동 줄바꿈 허용 */
         }
         .subheadline-en {
-            font-size: 1.4rem;
+            font-size: 1rem; /* 크기 조정 */
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1.5rem; /* 간격 조정 */
             line-height: 1.4;
             font-style: italic;
             text-align: center;
         }
         .login-notice {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem; /* 약간 축소 */
+            color: rgba(255, 255, 255, 0.85);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
             margin-top: 1rem;
             font-weight: 400;
             text-align: center;
+            line-height: 1.5;
         }
         footer {
             margin-top: auto;
@@ -147,8 +150,7 @@
     </style>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     </head>
-<body class="font-sans">
-    <nav class="bg-primary">
+<body class="font-sans flex flex-col min-h-screen"> <nav class="bg-primary">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="flex items-center space-x-2">
@@ -156,7 +158,7 @@
                     <span class="text-white font-bold text-2xl font-sans">사내 캠핑장</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <button id="logout-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 text-sm">
+                     <a href="rules.html" class="text-white hover:text-gray-300 transition">이용수칙</a> <button id="logout-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 text-sm">
                         로그아웃
                     </button>
                 </div>
@@ -167,18 +169,36 @@
     <div id="auth-section">
         <video id="video-background" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=100">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-family-roasting-marshmallows-over-a-campfire-39762-large.mp4" type="video/mp4">
-            <!-- 비디오가 지원되지 않을 경우 대체 이미지가 poster 속성으로 설정됨 -->
         </video>
         <div class="auth-content">
             <p class="subheadline-ko">자연 속 쉼표, 헬리녹스 직원만을 위한 프라이빗 캠핑 공간</p>
             <p class="subheadline-en">Experience peace and nature – just for the Helinox family</p>
-            
-            <div id="signin-button-wrapper"></div>
-            <p class="login-notice">* 본 서비스는 헬리녹스 직원만 이용 가능합니다 *<br>Sign in with your Helinox Google account</p>
-            <p id="message" class="mt-6"></p>
-        </div>
+
+            <div id="signin-button-wrapper"></div> <p class="login-notice">* 본 서비스는 헬리녹스 직원만 이용 가능합니다 *<br>Sign in with your Helinox Google account</p>
+            <p id="message" class="mt-4"></p> </div>
     </div>
+
     <div id="content">
+        <div class="relative h-screen">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="캠핑장 전경" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex items-center">
+                <div class="text-white max-w-3xl">
+                    <h1 class="text-5xl font-bold mb-6 whitespace-nowrap">Helinox 사내 캠핑장에 오신 것을 환영합니다</h1>
+                    <p class="text-xl mb-8">자연 속에서 즐기는 특별한 휴식, 직원들을 위한 프리미엄 캠핑 공간</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeR5Pm6GnzZXGa9CLRhuJ2YkreVKxmUKLkuR8YgRmUrZ6orEQ/viewform"
+                           target="_blank"
+                           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg">
+                            예약하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="py-16 bg-gray-100">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-8">예약 현황</h2>
@@ -241,7 +261,7 @@
                         전체 이용수칙 보기
                     </a>
                 </div>
-            </div>
+                </div>
         </div>
 
         <div class="py-16 bg-gray-100">
@@ -372,7 +392,11 @@
             } else {
                 console.log("허용되지 않은 사용자 또는 이메일 미인증:", email);
                 messageElement.textContent = `[${email || '알 수 없음'}] 계정은 접근 권한이 없습니다. 허용된 도메인(${ALLOWED_DOMAIN})의 Google 계정으로 로그인하세요.`;
+                // 로그아웃 상태 UI를 즉시 표시하도록 수정
                 displayLoggedOutUI();
+                // messageElement는 위에서 설정되므로 여기서는 보이도록 처리 (displayLoggedOutUI에서 숨겨짐)
+                messageElement.style.display = 'block';
+                messageElement.style.color = '#ffcc80'; // 경고성 메시지 색상 (선택 사항)
             }
         }
 
@@ -392,14 +416,19 @@
 
         // 로그아웃 상태 UI 표시
         function displayLoggedOutUI() {
-            authSection.style.display = 'block'; // 상단 인증 섹션 보임
+            authSection.style.display = 'flex'; // flex로 복원 (원래 스타일)
             logoutButton.style.display = 'none'; // Nav바의 로그아웃 버튼 숨김
             contentElement.style.display = 'none'; // 메인 콘텐츠 숨김
-            // Google 버튼은 자동으로 렌더링되므로 signinButtonWrapper를 숨길 필요 없음
+            messageElement.style.display = 'block'; // 메시지 영역은 보이도록 처리
+            messageElement.textContent = '캠핑장 정보를 보려면 Google 계정으로 로그인하세요.'; // 기본 메시지
+            messageElement.style.color = '#ffffff'; // 기본 메시지 색상
         }
 
         // 페이지 로드 완료 시 실행 (window.onload 사용)
         window.onload = function () {
+            // Nav바의 로그아웃 버튼 이벤트 리스너 먼저 연결 (요소가 존재하므로)
+            logoutButton.addEventListener('click', handleLogout);
+
             try {
                 google.accounts.id.initialize({
                     client_id: CLIENT_ID,
@@ -413,9 +442,6 @@
 
                 // 페이지 로드 시 자동 로그인을 시도하지 않으려면 아래 줄 주석 처리 또는 삭제
                 // google.accounts.id.prompt();
-
-                // 로그아웃 버튼 이벤트 리스너
-                logoutButton.addEventListener('click', handleLogout);
 
                 // 초기 UI는 로그아웃 상태로 설정
                 displayLoggedOutUI();
